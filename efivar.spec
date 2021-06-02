@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        4
+Release:        5
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
@@ -9,6 +9,7 @@ Patch0001:      first-fix-gcc9-new-waring.patch
 Patch0002:      second-fix-gcc9-new-waring.patch
 
 BuildRequires:  popt-devel glibc-static
+BuildRequires:  gcc
 Requires:       %{name}-libs = %{version}-%{release}
 
 %description
@@ -63,6 +64,12 @@ Development titles to use libefivar must be included.
 %{_mandir}/man3/*
 
 %changelog
+* Thu May 27 2021 lijingyuan <lijingyuan3@huawei.com> - 37-5
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:Add the compilation dependency of gcc.
+
 * Yue Jun 9 2020 zhujunhao <zhujunhao8@huawei.com> - 37-4
 - Type:bugfix
 - ID:NA
