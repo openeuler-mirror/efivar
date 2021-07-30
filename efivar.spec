@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        5
+Release:        6
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
@@ -34,6 +34,7 @@ Development titles to use libefivar must be included.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+export LDFLAGS="-flto-partition=none"
 %make_build
 
 %install
@@ -64,6 +65,12 @@ Development titles to use libefivar must be included.
 %{_mandir}/man3/*
 
 %changelog
+* Fri Jul 30 2021 gaihuiying <gaihuiying1@huawei.com> - 37-6
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix build error with gcc10
+
 * Thu May 27 2021 lijingyuan <lijingyuan3@huawei.com> - 37-5
 - Type:bugfix
 - ID:NA
