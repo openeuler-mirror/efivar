@@ -1,12 +1,14 @@
 Name:           efivar
 Version:        37
-Release:        6
+Release:        7
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
 Source0:        https://github.com/rhboot/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Patch0001:      first-fix-gcc9-new-waring.patch
 Patch0002:      second-fix-gcc9-new-waring.patch
+Patch0003:      backport-ucs2.h-remove-unused-variable.patch
+Patch0004:      backport-ucs2.h-fix-logic-that-checks-for-UCS-2-string-termin.patch
 
 BuildRequires:  popt-devel glibc-static
 BuildRequires:  gcc
@@ -65,6 +67,12 @@ export LDFLAGS="-flto-partition=none"
 %{_mandir}/man3/*
 
 %changelog
+* Thu Mar 24 2022 xinghe <xinghe2@h-partners.com> - 37-7
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix efibootmgr -v error
+
 * Fri Jul 30 2021 gaihuiying <gaihuiying1@huawei.com> - 37-6
 - Type:bugfix
 - ID:NA
