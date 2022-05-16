@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        6
+Release:        7
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
@@ -65,6 +65,9 @@ export LDFLAGS="-flto-partition=none"
 %{_mandir}/man3/*
 
 %changelog
+* Mon May 16 2022 mylee <liweiganga@uniontech.com> - 37-7
+- fix spec changelog date
+
 * Fri Jul 30 2021 gaihuiying <gaihuiying1@huawei.com> - 37-6
 - Type:bugfix
 - ID:NA
@@ -77,7 +80,7 @@ export LDFLAGS="-flto-partition=none"
 - SUG:NA
 - DESC:Add the compilation dependency of gcc.
 
-* Yue Jun 9 2020 zhujunhao <zhujunhao8@huawei.com> - 37-4
+* Tue Jun 9 2020 zhujunhao <zhujunhao8@huawei.com> - 37-4
 - Type:bugfix
 - ID:NA
 - SUG:NA
