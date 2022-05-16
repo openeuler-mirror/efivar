@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        4
+Release:        5
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
@@ -63,7 +63,10 @@ Development titles to use libefivar must be included.
 %{_mandir}/man3/*
 
 %changelog
-* Yue Jun 9 2020 zhujunhao <zhujunhao8@huawei.com> - 37-4
+* Mon May 16 2022 mylee <liweiganga@uniontech.com> - 37-5
+- fix spec changelog date
+
+* Tue Jun 9 2020 zhujunhao <zhujunhao8@huawei.com> - 37-4
 - Type:bugfix
 - ID:NA
 - SUG:NA
