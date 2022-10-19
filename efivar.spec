@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        8
+Release:        9
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/%{name}
@@ -9,6 +9,9 @@ Patch0001:      first-fix-gcc9-new-waring.patch
 Patch0002:      second-fix-gcc9-new-waring.patch
 Patch0003:      backport-ucs2.h-remove-unused-variable.patch
 Patch0004:      backport-ucs2.h-fix-logic-that-checks-for-UCS-2-string-termin.patch
+%ifarch sw_64
+Patch0005:      efivar-37-sw.patch
+%endif
 
 BuildRequires:  popt-devel glibc-static
 BuildRequires:  gcc
@@ -67,6 +70,12 @@ export LDFLAGS="-flto-partition=none"
 %{_mandir}/man3/*
 
 %changelog
+* Wed Oct 19 2022 wuzx<wuzx1226@qq.com> - 37-9
+- Type:feature
+- CVE:NA
+- SUG:NA
+- DESC:Add sw64 architecture
+
 * Mon May 16 2022 mylee <liweiganga@uniontech.com> - 37-8
 - fix spec changelog date
 
