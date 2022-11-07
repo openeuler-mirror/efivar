@@ -1,6 +1,6 @@
-diff -Naur efivar-37.org/Make.defaults efivar-37.sw/Make.defaults
---- efivar-37.org/Make.defaults	2022-02-27 04:16:18.440000000 +0000
-+++ efivar-37.sw/Make.defaults	2022-02-27 04:16:41.880000000 +0000
+diff -Naur efivar-38.org/src/include/defaults.mk efivar-38.sw/src/include/defaults.mk
+--- efivar-38.org/src/include/defaults.mk	2022-02-27 04:16:18.440000000 +0000
++++ efivar-38.sw/src/include/defaults.mk	2022-02-27 04:16:41.880000000 +0000
 @@ -1,6 +1,6 @@
  PREFIX	?= /usr
  EXEC_PREFIX ?= $(PREFIX)
