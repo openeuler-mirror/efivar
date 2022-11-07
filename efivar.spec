@@ -1,20 +1,19 @@
 Name:           efivar
-Version:        37
-Release:        9
+Version:        38
+Release:        1
 Summary:        Tools and libraries to work with EFI variables
-License:        LGPLv2.1
+License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/%{name}
 Source0:        https://github.com/rhboot/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
-Patch0001:      first-fix-gcc9-new-waring.patch
-Patch0002:      second-fix-gcc9-new-waring.patch
-Patch0003:      backport-ucs2.h-remove-unused-variable.patch
-Patch0004:      backport-ucs2.h-fix-logic-that-checks-for-UCS-2-string-termin.patch
+
+Patch0001:      0001-Fix-the-march-issue-for-riscv64.patch
+Patch0002:      0002-Fix-glibc-2.36-build-mount.h-conflicts.patch
 %ifarch sw_64
-Patch0005:      efivar-37-sw.patch
+Patch0003:      efivar-37-sw.patch
 %endif
 
 BuildRequires:  popt-devel glibc-static
-BuildRequires:  gcc
+BuildRequires:  gcc mandoc
 Requires:       %{name}-libs = %{version}-%{release}
 
 %description
@@ -44,13 +43,14 @@ export LDFLAGS="-flto-partition=none"
 
 %install
 %make_install
+install -m 0644 src/abignore %{buildroot}%{_includedir}/efivar/.abignore
 
 %ldconfig_scriptlets libs
 
 %files
 %defattr(-,root,root)
 %license COPYING
-%{_bindir}/%{name}
+%{_bindir}/*
 
 %files libs
 %defattr(-,root,root)
@@ -59,17 +59,25 @@ export LDFLAGS="-flto-partition=none"
 %files devel
 %defattr(-,root,root)
 %{_includedir}/%{name}/*.h
+%{_includedir}/%{name}/.abignore
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/libefiboot.so
 %{_libdir}/libefivar.so
+%{_libdir}/libefisec.so
 
 %files help
 %defattr(-,root,root)
 %doc README.md
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/*.1.gz
 %{_mandir}/man3/*
 
 %changelog
+* Mon Nov 07 2022 zhouyihang <zhouyihang3@h-partners.com> - 38-1
+- Type:requirements
+- ID:NA
+- SUG:NA
+- DESC:update efivar to 38
+
 * Wed Oct 19 2022 wuzx<wuzx1226@qq.com> - 37-9
 - Type:feature
 - CVE:NA
