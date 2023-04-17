@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        38
-Release:        1
+Release:        2
 Summary:        Tools and libraries to work with EFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/%{name}
@@ -38,8 +38,10 @@ Development titles to use libefivar must be included.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+%if "CC" == "gcc"
 export LDFLAGS="-flto-partition=none"
-%make_build
+%endif
+%make_build CC?=gcc
 
 %install
 %make_install
@@ -72,6 +74,9 @@ install -m 0644 src/abignore %{buildroot}%{_includedir}/efivar/.abignore
 %{_mandir}/man3/*
 
 %changelog
+* Thu Apr 13 2023 SaltyFruit <saltyfruit255@gmail.com> - 38-2
+- Fix CC compiler support and LDFLAGS error
+
 * Mon Nov 07 2022 zhouyihang <zhouyihang3@h-partners.com> - 38-1
 - Type:requirements
 - ID:NA
